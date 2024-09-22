@@ -46,7 +46,7 @@ app.get("/api/users/:id/logs", (req, res) => {
     return res.status(400).send('User does not exist');
   }
 
-  let exercises = Object.values(exerciseDb).filter(exercise => exercise._id === userId).filter(exercise => {
+  let exercises = Object.values(exerciseDb).filter(exercise => exercise._id === String(userId)).filter(exercise => {
     if(from && new Date(exercise.date) < new Date(from)) {
       return false;
     }
