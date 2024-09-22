@@ -81,7 +81,7 @@ app.post("/api/users/:id/exercises", (req, res) => {
     return res.status(400).send('User does not exist');
   }
 
-  exerciseDb[exerciseIncrId++] = {description, duration: Number(duration), date: new Date(Date.parse(date) ? date : Date.now()).toDateString(), _id: userId};
+  exerciseDb[exerciseIncrId++] = {description, duration: Number(duration), date: new Date(Date.parse(date) ? date : Date.now()).toDateString(), _id: String(userId)};
 
 
   return res.json({...exerciseDb[exerciseIncrId-1], ...userDb[userId]});
